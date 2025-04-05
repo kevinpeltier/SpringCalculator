@@ -144,7 +144,7 @@
                         </tr>
                         <tr>
                             <td>Deflection % 
-                                <button type="button" data-toggle="modal" data-target="#exampleModal" style="border:none; background-color: transparent; ">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" style="border:none; background-color: transparent;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                         <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
@@ -232,7 +232,7 @@
 
 
 
-<!-- Modal -->
+<!-- spring Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="5" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -325,11 +325,430 @@
 <p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e12')"><b>Lacks - Part Tonnage Calculator</b></button></p>
 
 <div style="display:none" id="e12">
-<p><i>IN PROGRESS</i></p><p><br></p>
+
+    <div class="w-50 mx-auto ">
+        <div class="d-flex flex-row justify-content-center">
+            <h4 class="text-center">Lacks Information</h4>
+            <button style="border: none; background: transparent; position: absolute; right: 250px;" id="tonageCheckPrint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                    <path d="M11 2H9v3h2z"/>
+                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                  </svg>
+            </div>
+        <br>
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row align-items-center w-100 mb-3">
+                <div class="input-group w-50">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Press Tonnage</span>
+                </div>
+                <input type="number" class="form-control border-right rounded-right" id="totalPressTonnage">
+                <button style="border:none; background-color: transparent;" data-target="#pressTonnageModal" data-toggle="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                    </svg>
+                </button>
+                </div>
+                <div class="w-50 pl-3 d-flex align-items-center">
+                    <div>Required Tonnage Per Quadrant: <b><span id="quadTonnageNeeded">000 Tons</span></b></div>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center w-100">
+                <div class="input-group w-50">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text">MoldFlow Tonnage</span>
+                        </div>
+                        <input type="number" step=".05" class="form-control" aria-label="" id="moldFlowWallStockTonnage">
+                        <div class="input-group-append">
+                                <span class="input-group-text rounded-right" >Tons &sup2;</span>
+                        </div>
+                        <button style="border:none; background-color: transparent;" data-target="#moldflowTonnageModal" data-toggle="modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                            </svg>
+                        </button>
+                </div>
+                <div class="w-50 pl-3 d-flex align-items-center">
+                    <div>Max Sqaure Inches Per Quadrant: <b><span id="qaudSqaureInchesMax">000.00 in²</span></b></div>
+                </div>
+            </div>
+        </div>
+            <hr>
+            <h4 class="text-center">Part Area</h4>
+            <br>
+        <div class="d-flex flex-row align-items-center"> 
+            <div class="input-group px-2 w-50">
+                <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 110px;">Quadrant 1</span>
+                </div>
+                <input type="number" class="form-control" aria-label="" id="partAreaQuadOne">
+                <div class="input-group-append">
+                        <span class="input-group-text" style="width: 60px;">inch &sup2;</span>
+                </div>
+            </div>    
+            <div class="input-group px-2 w-50">
+                <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 110px;">Quadrant 2</span>
+                </div>
+                <input type="number" class="form-control" aria-label="" id="partAreaQuadTwo">
+                <div class="input-group-append">
+                        <span class="input-group-text" style="width: 60px;">inch &sup2;</span>
+                </div>
+            </div>
+        </div>   
+        <div class="d-flex flex-row align-items-center my-3"> 
+            <div class="input-group px-2 w-50">
+                <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 110px;">Quadrant 3</span>
+                </div>
+                <input type="number" class="form-control" aria-label="" id="partAreaQuadThree">
+                <div class="input-group-append">
+                        <span class="input-group-text" style="width: 60px;">inch &sup2;</span>
+                </div>
+            </div>    
+            <div class="input-group px-2 w-50">
+                <div class="input-group-prepend">
+                        <span class="input-group-text" style="width: 110px;">Quadrant 4</span>
+                </div>
+                <input type="number" class="form-control" aria-label="" id="partAreaQuadFour">
+                <div class="input-group-append">
+                        <span class="input-group-text" style="width: 60px;">inch &sup2;</span>
+                </div>
+            </div>
+        </div> 
+        <hr>
+        <h4 class="text-center">Results</h4>
+        <div id="partTonnageDisplays" class="d-flex justify-content-center flex-column w-100 mx-auto">
+            <div class="d-flex flex-row mx-auto">
+                <div style="width: 250px; height: 250px; border-right: 1px solid grey;" id="partTonnagePassFail1" class="d-flex justify-content-center align-items-center flex-column p-3">
+                    <span style="font-size: 36px;"><b>Q1</b></span>
+                    <div>Tonnage Required For Part</div>
+                    <span id="quadOneTonnageNeededForPart">000.00 Tons</span>
+                    <span id="quadOnePrecentageDisplay">00.00%</span>
+                    <br>
+                    <div class="text-center d-flex flex-row justify-content-center align-items-center w-100 py-1 rounded text-dark" id="quadOnePassFail"></div>
+                </div>
+                <div style="width: 250px; height: 250px;" id="partTonnagePassFail2" class="d-flex justify-content-center align-items-center flex-column p-3">
+                    <span style="font-size: 36px;"><b>Q2</b></span>
+                    <div>Tonnage Required For Part</div>
+                    <span id="quadTwoTonnageNeededForPart">000.00 Tons</span>
+                    <span id="quadTwoPrecentageDisplay">00.00%</span>
+                    <br>
+                    <div class="text-center d-flex flex-row justify-content-center align-items-center w-100 py-1 rounded text-dark" id="quadTwoPassFail"></div>
+                </div>
+            </div>
+            <div class="d-flex flex-row mx-auto">
+                <div style="width: 250px; height: 250px; border-right: 1px solid grey; border-top: 1px solid grey;" id="partTonnagePassFail3" class="d-flex justify-content-center align-items-center flex-column p-3">
+                    <span style="font-size: 36px;"><b>Q3</b></span>
+                    <div>Tonnage Required For Part</div>
+                    <span id="quadThreeTonnageNeededForPart">000.00 Tons</span>
+                    <span id="quadThreePrecentageDisplay">00.00%</span>
+                    <br>
+                    <div class="text-center d-flex flex-row justify-content-center align-items-center w-100 py-1 rounded text-dark" id="quadThreePassFail"></div>
+                </div>
+                <div style="width: 250px; height: 250px; border-top: 1px solid grey;" id="partTonnagePassFail4" class="d-flex justify-content-center align-items-center flex-column p-3">
+                    <span style="font-size: 36px;"><b>Q4</b></span>
+                    <div>Tonnage Required For Part</div>
+                    <span id="quadFourTonnageNeededForPart">000.00 Tons</span>
+                    <span id="quadFourPrecentageDisplay">00.00%</span>
+                    <br>
+                    <div class="text-center d-flex flex-row justify-content-center align-items-center w-100 py-1 rounded text-dark" id="quadFourPassFail"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="w-100 mx-auto d-flex flex-column justify-content-center">
+            <span class="text-center"><i>Formula For Reference: Projected Part Area (x) Moldflow Tonnage = Required Tonnage For Part.</i></span>
+            <span class="text-center"><i>Tonnage For Part Much Be Less Than Tonnage Per Quadrant</i></span>
+        </div>
+    </div>
 </div>
 
-<!-- CALCULATOR HTML & STYLING SECTION END -->
+<!-- Lacks part tonnage modals -->
 
+<div class="modal fade" id="pressTonnageModal" tabindex="5" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pressTonnageModalLabel">Press Tonnage Guidelines</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li>Press tonnage is determined by the customer.</li>
+                <li>This information can be found in the kick-off excel document or within in GenVision.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Lacks parting line tonnage modals -->
+
+  <div class="modal fade" id="moldflowTonnageModal" tabindex="5" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="moldflowTonnageModalLabel">MoldFlow Tonnage Guidelines</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li>The MoldFlow tonnage is provided by Lacks.</li>
+                <li>Information is provided within the MoldFlow Spec Sheet.</li>
+                <li><img src="/media/django-summernote/2025-03-31/6283d4c8-a07a-47ff-83d5-223fe9b60c2e.png" style="width: 353.003px;"></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Lacks parting line tonnage calculator -->
+
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e2222')"><b>Lacks - Parting Line Tonnage Calculator</b></button></p>
+
+<div style="display:none" id="e2222">
+
+    <div class="w-50 mx-auto ">
+        <div class="d-flex flex-row justify-content-center">
+        <h4 class="text-center">Lacks Information</h4>
+        <button style="border: none; background: transparent; position: absolute; right: 250px;" id="partingLineTonPrint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                <path d="M11 2H9v3h2z"/>
+                <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+              </svg>
+        </div>
+    </button>
+        <br>
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row align-items-center w-100 mb-3">
+                <div class="input-group w-50">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Press Tonnage</span>
+                </div>
+                <input type="number" class="form-control border-right rounded-right" id="totalPressTonnagePartingLineCalc">
+                <button style="border:none; background-color: transparent;" data-target="#pressTonnageModal" data-toggle="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                    </svg>
+                </button>
+                </div>
+                <div class="w-50 pl-3 d-flex align-items-center">
+                    <div>Parting Line Coverage Required: <b><span id="supportSqaureInchesNeededDisplay">000.00 in²</span></b></div>
+                </div>
+            </div>
+            <div>
+                <hr>
+                <h4 class="text-center">Support Verification</h4>
+                <br>
+                <div class="d-flex flex-row pb-1">
+                    <div class="w-50 text-center">
+                        <h5>Seal-Off Requirement</h5>
+                    </div>
+                    <div class="w-50 text-center">
+                        <h5>Parting Line Pad Requirement</h5>
+                    </div>
+                </div>
+                <div class="d-flex flex-row pb-1">
+                    <div class="w-50 text-center">
+                        Minimum <b><span id="sealOffRequirement">000.00 in²</span></b> coverage is required
+                    </div>
+                    <div class="w-50 text-center">
+                        Minimum <b><span id="partingLinePadRequirement">000.00 in²</span></b> coverage is required
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="input-group w-50">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text">Seal-Off</span>
+                        </div>
+                        <input type="number" step=".05" class="form-control" aria-label="" id="sealOffSquareInches">
+                        <div class="input-group-append">
+                                <span class="input-group-text rounded-right" >Inches &sup2;</span>
+                        </div>
+                    </div>
+                    <div class="input-group w-50 pl-3">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text">P/L Pads</span>
+                        </div>
+                        <input type="number" step=".05" class="form-control" aria-label="" id="partingLinePadsSquareInches">
+                        <div class="input-group-append">
+                                <span class="input-group-text rounded-right" >Inches &sup2;</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <hr>
+                    <h4 class="w-100 text-center">Results</h4>
+                    <table class="table w-75 mx-auto table-borderless">
+                        <tr>
+                            <td scope="col" width="40%">Total Support</td>
+                            <td scope="col" width="30%" class="text-center" id="totalSupportAmount">00.00 in²</td>
+                            <td class="text-center d-flex flex-row justify-content-center align-items-center  m-1 rounded text-dark" id="totalSupportPassFail"></td>
+                        </tr>
+                        <tr>
+                            <td >Seal-Off Req'd</td>
+                            <td  class="text-center" id="actualSealOffPercentage">00.00%</td>
+                            <td  class="text-center d-flex flex-row justify-content-center align-items-center  m-1 rounded text-dark" id="sealOffPassFail"></td>
+                        </tr>
+                        <tr>
+                            <td>Parting Line Pad Req'd</td>
+                            <td class="text-center" id="actualPartingLinePadPercentage">00.00%</td>
+                            <td class="text-center d-flex flex-row justify-content-center align-items-center m-1 rounded text-dark" id="PartingLinePadPassFail"></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- printing Layouts-->
+
+<!-- Part Tonnage Print Format -->
+
+
+<div class="w-100" id="partTonnagePrintingLayout" style="display: none;">
+    <h5 class="text-center">Part Quadrant Tonnage Check</h5>
+    <br>
+    <div class="w-75 d-flex flex-column mx-auto">
+        <h4> Press: <span id="partTonnagepressUsedPrint">0000</span> Ton </h4>
+        <h6>MoldFlow Tonnage: <span id="moldFlowPartTonnagePrint">00.0</span></h6>
+        <h6>Tonnage per quadrant: <span id="partTonnageQuadrantPrint">00.00</span></h6>
+        <h6>Maximum square inches per quadrant: <span id="maxSqaureInchesPerQuadPrint">00.00</span></h6>
+    </div>
+    <hr>
+
+    <div class="w-75 mx-auto">
+        <h5 class="text-center">Sqaure Inches Per Quadrant</h5>
+        <br>
+        <table class="table">
+            <tr>
+                <th class="text-center">Quadrant One in²</th>
+                <th class="text-center">Quadrant Two in²</th>
+                <th class="text-center">Quadrant Three in²</th>
+                <th class="text-center">Quadrant Four in²</th>
+            </tr>
+            <tr>
+                <td class="text-center" id="quadOneSqaureInchesPrint">000.00</td>
+                <td class="text-center" id="quadTwoSqaureInchesPrint">000.00</td>
+                <td class="text-center" id="quadThreeSqaureInchesPrint">000.00</td>
+                <td class="text-center" id="quadFourSqaureInchesPrint">000.00</td>
+            </tr>
+        </table>
+    </div>
+    <div class="w-75 mx-auto">
+        <h5 class="text-center">Results</h5>
+        <br>
+        <table class="table">
+            <tr>
+                <td></td>
+                <th class="text-center">Quadrant One</th>
+                <th class="text-center">Quadrant Two</th>
+                <th class="text-center">Quadrant Three</th>
+                <th class="text-center">Quadrant Four</th>
+            </tr>
+            <tr>
+                <th>Part Tonnage Required <span style="font-size: 10px;">(TONS)</span></th>
+                <td class="text-center" id="quadOnepartTonnagedNeededPrint">000.00</td>
+                <td class="text-center" id="quadTwopartTonnagedNeededPrint">000.00</td>
+                <td class="text-center" id="quadThreepartTonnagedNeededPrint">000.00</td>
+                <td class="text-center" id="quadFourpartTonnagedNeededPrint">000.00</td>
+            </tr>
+            <tr>
+                <th>Quadrant Tonnage Utilized</th>
+                <td class="text-center" id="quadOneUtilizedPrint">000.00%</td>
+                <td class="text-center" id="quadTwoUtilizedPrint">000.00%</td>
+                <td class="text-center" id="quadThreeUtilizedPrint">000.00%</td>
+                <td class="text-center" id="quadFourUtilizedPrint">000.00%</td>
+            </tr>
+            <tr>
+                <th>Meets Lacks Standards</th>
+                <td class="text-center" id="quadOnePassFailStandardsPrint"></td>
+                <td class="text-center" id="quadTwoPassFailStandardsPrint"></td>
+                <td class="text-center" id="quadThreePassFailStandardsPrint"></td>
+                <td class="text-center" id="quadFourPassFailStandardsPrint"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!-- Parting Line Tonnage Print Format -->
+
+<div class="w-100" id="partingLineTonnagePrintingLayout" style="display: none;">
+    <div>
+        <h5 class="text-center">Parting Line Tonnage Check</h5>
+        <hr>
+        <div class="w-75 mx-auto d-flex flex-row align-items-center">
+            <h4> Press: <span id="pressUsedPrint">0000</span> Ton </h4>
+            <h6 class="pl-5">Minimum Total Seal Off Required For Press: <span id="pressSealOffRequirementPrint">0000.00</span></h6>
+        </div>
+        <div>
+            <table class="table w-75 mx-auto">
+                <tr>
+                    <th></th>
+                    <th>Seal-Off</th>
+                    <th>Pads</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <th>Min.</th>
+                    <td id="sealOffRequirementPrint">00.00</td>
+                    <td id="partingLinePadRequirementPrint">00.00</td>
+                    <td id="totalRequirementPrint">00.0</td>
+                </tr>
+                <tr>
+                    <th>Actual</th>
+                    <td id="actualSealOffPrint">00.00</td>
+                    <td id="actualPartingLinePadPrint">00.00</td>
+                    <td id="actualTotalSupportPrint">00.00</td>
+                </tr>
+                <tr>
+                    <th>Percentage</th>
+                    <td id="sealOffPrecentagePrint">00.00</td>
+                    <td id="partingLinePadsPrecentagePrint">00.00</td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="w-75 mx-auto">
+                <table class="table w-50  table-borderless">
+                    <tr>
+                        <th >Does Tonnage Meet Lacks Standards</th>
+                        <td id="totalTonnageStandardsPrint"></td>
+                    </tr>
+                    <tr>
+                        <th >Min. Seal Off Requirement Met or Exceeded</th>
+                        <td id="sealOffMeetStandardsPrint"></td>
+                    </tr>
+                    <tr>
+                        <th >Parting line pads make at Least 30% of total tonnage?</th>
+                        <td id="partingLinePadMeetStandardsPrint"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- CALCULATOR HTML & STYLING SECTION END -->
 
 
 
@@ -2811,11 +3230,318 @@ const mediumDutySprings = [
             }
         }
 
-        // Wedge Calculator Start
+
+
+        // Lacks Part Tonnage Requirement Calculator
+
+        let quadrantTonnageResultDisplay = document.getElementById('tonnageQuadOutputDisplay');
+        const pressTonnageInput = document.getElementById('totalPressTonnage');
+        const moldFlowTonnageInput = document.getElementById('moldFlowWallStockTonnage');
+        let quadPlatenViewNeededDisplay = document.getElementById('quadTonnageNeeded');
+        let partProjectedAreaQuadOne = document.getElementById('partAreaQuadOne');
+        let partProjectedAreaQuadTwo = document.getElementById('partAreaQuadTwo');
+        let partProjectedAreaQuadThree = document.getElementById('partAreaQuadThree');
+        let partProjectedAreaQuadFour = document.getElementById('partAreaQuadFour');
+        let quadOnePartTonnageNeededDisplay = document.getElementById('quadOneTonnageNeededForPart');
+        let quadTwoPartTonnageNeededDisplay = document.getElementById('quadTwoTonnageNeededForPart');
+        let quadThreePartTonnageNeededDisplay = document.getElementById('quadThreeTonnageNeededForPart');
+        let quadFourPartTonnageNeededDisplay = document.getElementById('quadFourTonnageNeededForPart');
+        let quadOnePassFailing = document.getElementById('quadOnePassFail');
+        let quadTwoPassFailing = document.getElementById('quadTwoPassFail');
+        let quadThreePassFailing = document.getElementById('quadThreePassFail');
+        let quadFourPassFailing = document.getElementById('quadFourPassFail');
+        let generalQuadrantMax = document.getElementById('qaudSqaureInchesMax');
+        let maxSqaureInchesQuadOneDisplay = document.getElementById('quadSquareInchesMax1');
+        let maxSqaureInchesQuadTwoDisplay = document.getElementById('quadSquareInchesMax2');
+        let maxSqaureInchesQuadThreeDisplay = document.getElementById('quadSquareInchesMax3');
+        let maxSqaureInchesQuadFourDisplay = document.getElementById('quadSquareInchesMax4');
+        let quadOnePrecentageDisplayed = document.getElementById('quadOnePrecentageDisplay');
+        let quadTwoPercentageDisplayed = document.getElementById('quadTwoPrecentageDisplay');
+        let quadThreePercentageDisplayed = document.getElementById('quadThreePrecentageDisplay');
+        let quadFourPercentageDisplayed = document.getElementById('quadFourPrecentageDisplay');
+        let partTonnagePressUsePrintDisplay = document.getElementById('partTonnagepressUsedPrint');
+        let partMoldFlowTonnagePrintDisplay = document.getElementById('moldFlowPartTonnagePrint');
+        let partTonnageQuadrantPrintDisplay = document.getElementById('partTonnageQuadrantPrint');
+        let maxSqaureInchesPerQuadPrintdisplay = document.getElementById('maxSqaureInchesPerQuadPrint');
+        let quadOneSqaureInchesPrintDisplay = document.getElementById('quadOneSqaureInchesPrint');
+        let quadTwoSqaureInchesPrintDisplay = document.getElementById('quadTwoSqaureInchesPrint');
+        let quadThreeSqaureInchesPrintDisplay = document.getElementById('quadThreeSqaureInchesPrint');
+        let quadFourSqaureInchesPrintDisplay = document.getElementById('quadFourSqaureInchesPrint');
+        let quadOnepartTonnagedNeededPrintDisplay = document.getElementById('quadOnepartTonnagedNeededPrint');
+        let quadTwopartTonnagedNeededPrintDisplay = document.getElementById('quadTwopartTonnagedNeededPrint');
+        let quadThreepartTonnagedNeededPrintDisplay = document.getElementById('quadThreepartTonnagedNeededPrint');
+        let quadFourpartTonnagedNeededPrintDisplay = document.getElementById('quadFourpartTonnagedNeededPrint');
+        let quadOneUtilizedPrintDisplay = document.getElementById('quadOneUtilizedPrint');
+        let quadTwoUtilizedPrintDisplay = document.getElementById('quadTwoUtilizedPrint');
+        let quadThreeUtilizedPrintDisplay = document.getElementById('quadThreeUtilizedPrint');
+        let quadFourUtilizedPrintDisplay = document.getElementById('quadFourUtilizedPrint');
+        let quadOnePassFailStandardsPrintDisplay = document.getElementById('quadOnePassFailStandardsPrint');
+        let quadTwoPassFailStandardsPrintDisplay = document.getElementById('quadTwoPassFailStandardsPrint');
+        let quadThreePassFailStandardsPrintDisplay = document.getElementById('quadThreePassFailStandardsPrint');
+        let quadFourPassFailStandardsPrintDisplay = document.getElementById('quadFourPassFailStandardsPrint');
+
+        
+
+
+        function lacksPartTonnageCalc(){
+            let pressTonnageValue = document.getElementById('totalPressTonnage').value;
+            let moldFlowTonnageValue = document.getElementById('moldFlowWallStockTonnage').value;
+            let partAreaQuadOneValue = document.getElementById('partAreaQuadOne').value
+            let partAreaQuadTwoValue = document.getElementById('partAreaQuadTwo').value
+            let partAreaQuadThreeValue = document.getElementById('partAreaQuadThree').value
+            let partAreaQuadFourValue = document.getElementById('partAreaQuadFour').value
+            let quarterTonnageCalculation = pressTonnageValue / 4;
+            let quarterTonnageValue = quarterTonnageCalculation.toFixed(2);
+            let quadOnePartTonnageNeeded = Math.abs(partAreaQuadOneValue * moldFlowTonnageValue).toFixed(2);
+            let quadTwoPartTonnageNeeded = Math.abs(partAreaQuadTwoValue * moldFlowTonnageValue).toFixed(2);
+            let quadThreePartTonnageNeeded = Math.abs(partAreaQuadThreeValue * moldFlowTonnageValue).toFixed(2);
+            let quadFourPartTonnageNeeded = Math.abs(partAreaQuadFourValue * moldFlowTonnageValue).toFixed(2);
+            let maxSqaureInchesCalculation =  Math.abs(quarterTonnageCalculation / moldFlowTonnageValue).toFixed(3);
+
+
+            // platen coverage percentage
+
+            let quadOneCoveragePercentage = Math.abs((quadOnePartTonnageNeeded / quarterTonnageCalculation) * 100).toFixed(2);
+            let quadTwoCoveragePercentage = Math.abs((quadTwoPartTonnageNeeded / quarterTonnageCalculation) * 100).toFixed(2);
+            let quadThreeCoveragePercentage = Math.abs((quadThreePartTonnageNeeded / quarterTonnageCalculation) * 100).toFixed(2);
+            let quadFourCoveragePercentage = Math.abs((quadFourPartTonnageNeeded / quarterTonnageCalculation) * 100).toFixed(2);
+   
+
+            let maxPlatenCoveragePercentageCalculation = Math.abs(Math.max(quadOneCoveragePercentage, quadTwoCoveragePercentage, quadThreeCoveragePercentage, quadFourCoveragePercentage) * 100).toFixed(2);
+            let maxPlatenCoveragePercentageDisplay = document.getElementById('maxCoveragePercentage');
+            let minPlatenCoveragePercentageCalculation = Math.abs(Math.min(quadOneCoveragePercentage, quadTwoCoveragePercentage, quadThreeCoveragePercentage, quadFourCoveragePercentage) * 100).toFixed(2);
+            let minPlatenCoveragePercentageDisplay = document.getElementById('minCoveragePercentage');
+            let plateCoverageDifferenceCalculation = Math.abs(maxPlatenCoveragePercentageCalculation - minPlatenCoveragePercentageCalculation).toFixed(2);
+            let differenceCoveragePercentageDisplay = document.getElementById('differenceCoveragePercentage');
 
 
 
-        // hide/show function
+            quadPlatenViewNeededDisplay.innerText = quarterTonnageCalculation + ' Tons';
+            generalQuadrantMax.innerText = maxSqaureInchesCalculation + ' in²';
+            quadOnePartTonnageNeededDisplay.innerText = quadOnePartTonnageNeeded + ' Tons';
+            quadTwoPartTonnageNeededDisplay.innerText = quadTwoPartTonnageNeeded + ' Tons';
+            quadThreePartTonnageNeededDisplay.innerText = quadThreePartTonnageNeeded + ' Tons';
+            quadFourPartTonnageNeededDisplay.innerText = quadFourPartTonnageNeeded + ' Tons';
+            quadOnePrecentageDisplayed.innerText = quadOneCoveragePercentage + '%';
+            quadTwoPercentageDisplayed.innerText = quadTwoCoveragePercentage + '%';
+            quadThreePercentageDisplayed.innerText = quadThreeCoveragePercentage + '%';
+            quadFourPercentageDisplayed.innerText = quadFourCoveragePercentage + '%';
+            partTonnagePressUsePrintDisplay.innerText = pressTonnageValue;
+            partMoldFlowTonnagePrintDisplay.innerText = moldFlowTonnageValue + ' Tons / in²';
+            partTonnageQuadrantPrintDisplay.innerText = quarterTonnageCalculation + ' Tons';
+            maxSqaureInchesPerQuadPrintdisplay.innerText = maxSqaureInchesCalculation + ' in²';
+            quadOneSqaureInchesPrintDisplay.innerText = partAreaQuadOneValue + ' in²';
+            quadTwoSqaureInchesPrintDisplay.innerText = partAreaQuadTwoValue + ' in²';
+            quadThreeSqaureInchesPrintDisplay.innerText = partAreaQuadThreeValue + ' in²';
+            quadFourSqaureInchesPrintDisplay.innerText = partAreaQuadFourValue + ' in²';
+            quadOnepartTonnagedNeededPrintDisplay.innerText = quadOnePartTonnageNeeded;
+            quadTwopartTonnagedNeededPrintDisplay.innerText = quadTwoPartTonnageNeeded;
+            quadThreepartTonnagedNeededPrintDisplay.innerText = quadThreePartTonnageNeeded;
+            quadFourpartTonnagedNeededPrintDisplay.innerText = quadFourPartTonnageNeeded;
+            quadOneUtilizedPrintDisplay.innerText = quadOneCoveragePercentage + '%';
+            quadTwoUtilizedPrintDisplay.innerText = quadTwoCoveragePercentage + '%';
+            quadThreeUtilizedPrintDisplay.innerText = quadThreeCoveragePercentage + '%';
+            quadFourUtilizedPrintDisplay.innerText = quadFourCoveragePercentage + '%';
+
+            
+            if (quarterTonnageCalculation < quadOnePartTonnageNeeded || quadOnePartTonnageNeeded == 0){
+                quadOnePassFailing.classList.remove("bg-success");
+                quadOnePassFailing.classList.add("bg-danger");
+                quadOnePassFailing.innerText = "FAIL";
+                quadOnePassFailStandardsPrintDisplay.innerText = "No";
+            } else {
+                quadOnePassFailing.classList.remove("bg-danger");
+                quadOnePassFailing.classList.add("bg-success");
+                quadOnePassFailing.innerText = "PASS";
+                quadOnePassFailStandardsPrintDisplay.innerText = "Yes";
+            }
+            
+            if (quarterTonnageCalculation < quadTwoPartTonnageNeeded || quadTwoPartTonnageNeeded == 0){
+                quadTwoPassFailing.classList.remove("bg-success");
+                quadTwoPassFailing.classList.add("bg-danger");
+                quadTwoPassFailing.innerText = "FAIL";
+                quadTwoPassFailStandardsPrintDisplay.innerText = "No";
+            } else {
+                quadTwoPassFailing.classList.remove("bg-danger");
+                quadTwoPassFailing.classList.add("bg-success");
+                quadTwoPassFailing.innerText = "PASS";
+                quadTwoPassFailStandardsPrintDisplay.innerText = "Yes";
+            }
+            
+            if (quarterTonnageCalculation < quadThreePartTonnageNeeded || quadThreePartTonnageNeeded == 0){
+                quadThreePassFailing.classList.remove("bg-success");
+                quadThreePassFailing.classList.add("bg-danger");
+                quadThreePassFailing.innerText = "FAIL";
+                quadThreePassFailStandardsPrintDisplay.innerText = "No";
+            } else {
+                quadThreePassFailing.classList.remove("bg-danger");
+                quadThreePassFailing.classList.add("bg-success");
+                quadThreePassFailing.innerText = "PASS";
+                quadThreePassFailStandardsPrintDisplay.innerText = "Yes";
+            }
+            
+            if (quarterTonnageCalculation < quadFourPartTonnageNeeded || quadFourPartTonnageNeeded == 0){
+                quadFourPassFailing.classList.remove("bg-success");
+                quadFourPassFailing.classList.add("bg-danger");
+                quadFourPassFailing.innerText = "FAIL";
+                quadFourPassFailStandardsPrintDisplay.innerText = "No";
+            } else {
+                quadFourPassFailing.classList.remove("bg-danger");
+                quadFourPassFailing.classList.add("bg-success");
+                quadFourPassFailing.innerText = "PASS";
+                quadFourPassFailStandardsPrintDisplay.innerText = "Yes";
+            }
+            
+            // console.log(partAreaQuadFourValue);
+        }
+
+
+
+
+
+        // Lacks Parting Line Tonnage Requirement Calculator
+
+        let pressTonnagePartingLineInput = document.getElementById('totalPressTonnagePartingLineCalc');
+        let squareInchesSupportNeeded = document.getElementById('supportSqaureInchesNeededDisplay');
+        let sealOffCoverageRequiredDisplay = document.getElementById('sealOffRequirement');
+        let partingLinePadCoverageRequiredDisplay = document.getElementById('partingLinePadRequirement');
+        let sealOffSqaureInchesInput = document.getElementById('sealOffSquareInches');
+        let partingLinePadSqaureInchesInput = document.getElementById('partingLinePadsSquareInches');
+        let actualSealOffPercentageDisplay = document.getElementById('actualSealOffPercentage');
+        let actualPartingLinePadPercentageDisplay = document.getElementById('actualPartingLinePadPercentage');
+        let totalSupportSquareInchesDispaly = document.getElementById('totalSupportAmount');
+        let totalSupportPassFailDisplay = document.getElementById('totalSupportPassFail');
+        let sealOffRequiredPassFailDisplay = document.getElementById('sealOffPassFail');
+        let partingLineRequiredPassFailDisplay = document.getElementById('PartingLinePadPassFail');
+        let minSealOffReqPrintDisplay = document.getElementById('sealOffRequirementPrint');
+        let minPartingLinePadReqPrintDisplay = document.getElementById('partingLinePadRequirementPrint');
+        let minTotalReqPrintDisplay = document.getElementById('totalRequirementPrint');
+        let pressUsedDisplayPrint = document.getElementById('pressUsedPrint');
+        let actualSealOffSqaureInchesPrint = document.getElementById('actualSealOffPrint');
+        let actualPartingLinePadsSqaureInchesPrint = document.getElementById('actualPartingLinePadPrint');
+        let actualTotalSupportSqaureInchesPrint = document.getElementById('actualTotalSupportPrint');
+        let sealOffPrecentDisplayPrint = document.getElementById('sealOffPrecentagePrint');
+        let partingLinePadDisplayPrint = document.getElementById('partingLinePadsPrecentagePrint');
+        let totalTonnageMeetStandards = document.getElementById('totalTonnageStandardsPrint');
+        let sealOffTonnageMeetStandards = document.getElementById('sealOffMeetStandardsPrint');
+        let partingLineTonnageMeetStandards = document.getElementById('partingLinePadMeetStandardsPrint');
+        let pressSealOffRequirementPrintDisplay = document.getElementById('pressSealOffRequirementPrint');
+
+
+
+
+        function lacksPartingLineTonnageCalc(){
+            let pressTonnagePartingLineValue = document.getElementById('totalPressTonnagePartingLineCalc').value;
+            let supportSqaureInchesCalculation = Math.abs(pressTonnagePartingLineValue / 2.5).toFixed(2);
+            let sealOffSupportCalculation = Math.abs(supportSqaureInchesCalculation * 0.7).toFixed(2);
+            let sealOffSqaureInchesValue = document.getElementById('sealOffSquareInches').value;
+            let partingLinePadSqaureInchesValue = document.getElementById('partingLinePadsSquareInches').value;
+            let totalSupportSqaureInchesCalculation = Math.abs(Number(sealOffSqaureInchesValue) + Number(partingLinePadSqaureInchesValue)).toFixed(2);
+            let actualSealOffPercentageCalculation = Number(Math.abs((sealOffSqaureInchesValue / totalSupportSqaureInchesCalculation) * 100).toFixed(2));
+            let actualPartingLinePadPercentageCalculation = Math.abs((partingLinePadSqaureInchesValue / totalSupportSqaureInchesCalculation) * 100).toFixed(2);
+            let partingLinePadSupportCalculation = Math.abs((sealOffSqaureInchesValue) / 2.3333).toFixed(2);
+            let mintotalSupportSqaureNeeded = Math.abs(Number(sealOffSqaureInchesValue) + Number(partingLinePadSupportCalculation)).toFixed(2);
+        
+
+            squareInchesSupportNeeded.innerText = supportSqaureInchesCalculation + ' in²';
+            sealOffCoverageRequiredDisplay.innerText = sealOffSupportCalculation + ' in²';
+            partingLinePadCoverageRequiredDisplay.innerText = partingLinePadSupportCalculation + ' in²';
+            totalSupportSquareInchesDispaly.innerText = totalSupportSqaureInchesCalculation + ' in²';
+            actualSealOffPercentageDisplay.innerText = actualSealOffPercentageCalculation + '%';
+            actualPartingLinePadPercentageDisplay.innerText = actualPartingLinePadPercentageCalculation + '%';
+            minSealOffReqPrintDisplay.innerText = sealOffSupportCalculation + ' in²';
+            minPartingLinePadReqPrintDisplay.innerText = partingLinePadSupportCalculation + ' in²';
+            minTotalReqPrintDisplay.innerText = mintotalSupportSqaureNeeded + ' in²';
+            pressUsedDisplayPrint.innerText = pressTonnagePartingLineValue;
+            actualSealOffSqaureInchesPrint.innerText = sealOffSqaureInchesValue + ' in²';
+            actualPartingLinePadsSqaureInchesPrint.innerText = partingLinePadSqaureInchesValue + ' in²';
+            actualTotalSupportSqaureInchesPrint.innerText = totalSupportSqaureInchesCalculation + ' in²';
+            sealOffPrecentDisplayPrint.innerText = actualSealOffPercentageCalculation + '%';
+            partingLinePadDisplayPrint.innerText = actualPartingLinePadPercentageCalculation + '%';
+            pressSealOffRequirementPrintDisplay.innerText = supportSqaureInchesCalculation + ' in²';
+
+            if (isNaN(actualSealOffPercentageCalculation)){
+                actualSealOffPercentageDisplay.innerText = '0.0%'
+            } else {
+                actualSealOffPercentageDisplay.innerText = actualSealOffPercentageCalculation + '%';
+            }
+
+            if (isNaN(actualPartingLinePadPercentageCalculation)){
+                actualPartingLinePadPercentageDisplay.innerText = '0.0%'
+            } else {
+                actualPartingLinePadPercentageDisplay.innerText = actualPartingLinePadPercentageCalculation + '%';
+            }
+
+
+            if (Number(supportSqaureInchesCalculation)  > totalSupportSqaureInchesCalculation || supportSqaureInchesCalculation == 0){
+                totalSupportPassFailDisplay.classList.remove("bg-success");
+                totalSupportPassFailDisplay.classList.add("bg-danger");
+                totalSupportPassFailDisplay.innerText = "FAIL";
+                totalTonnageMeetStandards.innerText = "No";
+            } else {
+                totalSupportPassFailDisplay.classList.remove("bg-danger");
+                totalSupportPassFailDisplay.classList.add("bg-success")
+                totalSupportPassFailDisplay.innerText = "PASS";
+                totalTonnageMeetStandards.innerText = "Yes";
+            }
+
+
+            if (actualSealOffPercentageCalculation > 70 || sealOffSqaureInchesValue < (sealOffSupportCalculation - 0.01)){
+                sealOffRequiredPassFailDisplay.classList.remove("bg-success");
+                sealOffRequiredPassFailDisplay.classList.add("bg-danger");
+                sealOffRequiredPassFailDisplay.innerText = "FAIL";
+                sealOffTonnageMeetStandards.innerText = "No"
+            }  else if (isNaN(actualSealOffPercentageCalculation)){
+                sealOffRequiredPassFailDisplay.classList.remove("bg-success");
+                sealOffRequiredPassFailDisplay.classList.add("bg-danger");
+                sealOffRequiredPassFailDisplay.innerText = "FAIL";
+                sealOffTonnageMeetStandards.innerText = "No"
+            }  else {
+                sealOffRequiredPassFailDisplay.classList.remove("bg-danger");
+                sealOffRequiredPassFailDisplay.classList.add("bg-success");
+                sealOffRequiredPassFailDisplay.innerText = "PASS";
+                sealOffTonnageMeetStandards.innerText = "Yes"
+            }
+            
+
+            if (actualPartingLinePadPercentageCalculation < 30 || partingLinePadSqaureInchesValue < (partingLinePadSupportCalculation - .01)){
+                partingLineRequiredPassFailDisplay.classList.remove("bg-success");
+                partingLineRequiredPassFailDisplay.classList.add("bg-danger");
+                partingLineRequiredPassFailDisplay.innerText = "FAIL";
+                partingLineTonnageMeetStandards.innerText = "No"
+            }  else if (isNaN(actualPartingLinePadPercentageCalculation)){
+                partingLineRequiredPassFailDisplay.classList.remove("bg-success");
+                partingLineRequiredPassFailDisplay.classList.add("bg-danger");
+                partingLineRequiredPassFailDisplay.innerText = "FAIL";
+                partingLineTonnageMeetStandards.innerText = "No"
+            }  else {
+                partingLineRequiredPassFailDisplay.classList.remove("bg-danger");
+                partingLineRequiredPassFailDisplay.classList.add("bg-success");
+                partingLineRequiredPassFailDisplay.innerText = "PASS";
+                partingLineTonnageMeetStandards.innerText = "Yes"
+            }
+    
+
+        }
+
+
+        pressTonnageInput.addEventListener("change", lacksPartTonnageCalc);
+        moldFlowTonnageInput.addEventListener("change", lacksPartTonnageCalc);
+        partProjectedAreaQuadOne.addEventListener("change", lacksPartTonnageCalc);
+        partProjectedAreaQuadTwo.addEventListener("change", lacksPartTonnageCalc);
+        partProjectedAreaQuadThree.addEventListener("change", lacksPartTonnageCalc);
+        partProjectedAreaQuadFour.addEventListener("change", lacksPartTonnageCalc);
+     
+        pressTonnagePartingLineInput.addEventListener("change", lacksPartingLineTonnageCalc);
+        sealOffSqaureInchesInput.addEventListener("change", lacksPartingLineTonnageCalc);
+        partingLinePadSqaureInchesInput.addEventListener("change", lacksPartingLineTonnageCalc);
+        
+
+        // Printing Testing For tonage Check
+
+
+
+
 
         function hideshow(e) {
           var x = document.getElementById(e);
