@@ -21,11 +21,19 @@
 
 
 <div class="w-50 mx-auto">
-    <form id="compressionCalculatorForm">
     <div class="d-flex justify-content-center flex-column">
+        <div class="d-flex flex-row justify-content-center">
+            <h4 class="text-center">Spring Information</h4>
+            <button style="border: none; background: transparent; position: absolute; right: 250px;" id="springInfoPrint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                    <path d="M11 2H9v3h2z"/>
+                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                  </svg>
+            </div>
             <br>
             <div id="ejectionSpringOption" class="w-100 d-flex flex-row">
                 <h5 class="pr-3">Choose Spring Operation:</h5>
+                
                 <div class="form-check">
                     <input class="form-check-input" name="springType" type="radio" value="ejectionType" id="ejectionOperationSelection">
                     <label class="form-check-label" for="ejectionType">
@@ -223,7 +231,6 @@
             </div>
         </div>
     </div>
-    </form>
 </div>
 
 
@@ -274,6 +281,7 @@
             </li>
           </ul>
           <hr>
+          <h4>Pass/Fail Color Results</h4>
           <p>Green = Acceptable</p>
           <p>Orange = Discuss with manager</p>
           <p>Red = Unacceptable</p>
@@ -610,7 +618,6 @@
                         </tr>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
@@ -620,6 +627,101 @@
 
 
 <!-- printing Layouts-->
+
+
+<!-- Spring calculator results Print Format -->
+
+ <div class="w-100" id="springCalculatorPrintingLayout" style="display: none;">
+    <h5 class="text-center">Spring Calculator</h5>
+    <br>
+    <div class="w-75 d-flex flex-column mx-auto">
+        <p><b>Spring Operation Type: </b><span id="springOperationTypePrint">XXXXXXXX</span></p>
+        <p><b>Spring Part Number: </b><span id="springPartNumberPrint">XXXX</span></p>
+        <p><b>Spring Color: </b><span id="springColorPrint">Blue</span></p>
+        <p><b>Spring Diameter: </b><span id="springDiameterPrint">1.0"</span></p>
+        <p><b>Spring Free Legnth: </b><span id="springLengthPrint">5.0"</span></p>
+    </div>
+    <hr>
+    <div class="w-75 d-flex flex-column mx-auto">
+        <h5 class="text-center">Spring Calculation Parameters</h5>
+        <div class="d-flex flex-row w-75">
+            <div class="p-3">
+                <p><b>Spring Preload: </b><span id="springPreloadPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Spring Travel: </b><span id="springTravelPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Spring Quantity: </b><span id="springQuantityPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Weight: </b><span id="springWeightPrint">00.00</span></p>
+            </div>
+        </div>
+        <br>
+        <h5 class="text-center">Spring Validation</h5>
+        <div class="w-75 d-flex flex-row">
+
+            <div class="p-3">
+                <p><b>Total Compression: </b><span id="totalCompressionPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Deflection: </b><span id="deflectionPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Intial Load: </b><span id="initalLoadPrint">00.00</span></p>
+            </div>
+            <div class="p-3">
+                <p><b>Final Load: </b><span id="finalLoadPrint">00.00</span></p>
+            </div>
+        </div>
+        <h5 class="text-center">Spring Validation Results</h5>
+        <div class="w-75 p-3" id="ejectionPassFailResultsPrint" style="display: none;">
+            <p><b>Is initial load great than <span id="requiredEjectionWeightPrint">00.00</span> ? :</b><span class="p-3" id="ejectionPassFailResultsPrintAnswer">Yes</span></p>
+        </div>
+        <div class="w-75 p-3" id="compressedPassFailResultsPrint" style="display: none;">
+            <p><b>Is the spring strong enough to accomodate 1 x of the weight? :</b><span class="p-3" id="compressOneTimesPassFailResultsPrintAnswer">Yes</span></p>
+            <p><b>Is the spring strong enough to accomodate 1.5 x of the weight? :</b><span class="p-3" id="compressOneFiveTimesPassFailResultsPrintAnswer">Yes</span></p>
+            <p><b>Is the spring strong enough to accomodate 2 x of the weight? :</b><span class="p-3" id="compressTwoTimesPassFailResultsPrintAnswer">Yes</span></p>
+        </div>
+    </div>
+    <hr>
+    <div class="w-75 d-flex flex-column mx-auto">
+        <h5 class="text-center">Spring Deflection Guidelines</h5>
+        <ul style="font-size: 12px;" class="d-flex flex-row flex-wrap">
+            <li class="px-3" style="list-style: none;">
+                <h6>Heavy Duty</h6>
+                <br>
+                <ul>
+                    <li>For Optimum Life - 15% Free Length - Green</li>
+                    <li>For Long Life - 20% Free Length - Green</li>
+                    <li>Maximum Operating Deflection - 25% Free Length - Orange</li>
+                </ul>
+                <br>
+            </li>
+            <li class="px-3" style="list-style: none;">
+                <h6>Medium Heavy Duty</h6>
+                <ul>
+                    <li>For Optimum Life - 20% Free Length - Green</li>
+                    <li>For Long Life - 25% Free Length - Green</li>
+                    <li>Maximum Operating Deflection - 30% Free Length - Orange</li>
+                </ul>
+                <br>
+            </li>
+            <li class="px-3" style="list-style: none;">
+                <h6>Medium Duty</h6>
+                <ul>
+                    <li>For Optimum Life - 25% Free Length - Green</li>
+                    <li>For Long Life - 35% Free Length - Green</li>
+                    <li>Maximum Operating Deflection - 40% Free Length - Orange</li>
+                </ul>
+                <br>
+            </li>
+          </ul>
+    </div>
+ </div>
+
+
 
 <!-- Part Tonnage Print Format -->
 
@@ -2950,6 +3052,24 @@ const mediumDutySprings = [
         const twoTimesWeightDisplay = document.getElementById('weightTwoTimesPassFail');
         const ejectionCheckWeightDisplay = document.getElementById('ejectionWeightHalfValue');
         const ejectionPassFailDisplay = document.getElementById('ejectionWeightPassFail');
+        let springOperationTypePrintDisplay = document.getElementById('springOperationTypePrint');
+        let springPartNumberPrintDisplay = document.getElementById('springPartNumberPrint');
+        let springColorPrintDisplay = document.getElementById('springColorPrint');
+        let springDiameterPrintDisplay = document.getElementById('springDiameterPrint');
+        let springLengthPrintDisplay = document.getElementById('springLengthPrint');
+        let springPreloadPrintDisplay = document.getElementById('springPreloadPrint');
+        let springTravelPrintDisplay = document.getElementById('springTravelPrint');
+        let springQuantityPrintDisplay = document.getElementById('springQuantityPrint');
+        let springWeightPrintDisplay = document.getElementById('springWeightPrint');
+        let totalCompressionPrintDisplay = document.getElementById('totalCompressionPrint');
+        let deflectionPrintDisplay = document.getElementById('deflectionPrint');
+        let initalLoadPrintDisplay = document.getElementById('initalLoadPrint');
+        let finalLoadPrintDisplay = document.getElementById('finalLoadPrint');
+        let requiredEjectionWeightPrintDisplay = document.getElementById('requiredEjectionWeightPrint');
+        let ejectionPassFailResultsPrintAnswerDisplay = document.getElementById('ejectionPassFailResultsPrintAnswer');
+        let compressOneTimesPassFailResultsPrintAnswerDisplay = document.getElementById('compressOneTimesPassFailResultsPrintAnswer');
+        let compressOneFiveTimesPassFailResultsPrintAnswerDisplay = document.getElementById('compressOneFiveTimesPassFailResultsPrintAnswer');
+        let compressTwoTimesPassFailResultsPrintAnswerDisplay = document.getElementById('compressTwoTimesPassFailResultsPrintAnswer');
 
 
         // Get Spring Operation Type
@@ -2967,11 +3087,17 @@ const mediumDutySprings = [
                         document.getElementById('compressedSpringMathOne').style.display = 'none';
                         document.getElementById('compressedSpringMathOneFive').style.display = 'none';
                         document.getElementById('compressedSpringMathTwo').style.display = 'none';
+                        document.getElementById('ejectionPassFailResultsPrint').style.display = '';
+                        document.getElementById('compressedPassFailResultsPrint').style.display = 'none';
+                        springOperationTypePrintDisplay.innerText = "Ejection"
                     } else if (compressedTypeSelected){
                         document.getElementById('ejectionSpringMath').style.display = 'none';
                         document.getElementById('compressedSpringMathOne').style.display = '';
                         document.getElementById('compressedSpringMathOneFive').style.display = '';
                         document.getElementById('compressedSpringMathTwo').style.display = '';
+                        document.getElementById('ejectionPassFailResultsPrint').style.display = 'none';
+                        document.getElementById('compressedPassFailResultsPrint').style.display = '';
+                        springOperationTypePrintDisplay.innerText = "Compressed Spring"
                     }
                 }
 
@@ -3075,6 +3201,10 @@ const mediumDutySprings = [
                 outerDiameterValue.innerHTML = 'Ø ' + springODResult;
                 freelength.innerHTML = springLengthResult + '"';
                 innerDiameterValue.innerHTML = 'Ø ' + springIDResult;
+                springPartNumberPrintDisplay.innerText = springCodeNumber;
+                springDiameterPrintDisplay.innerText = 'Ø ' + springODResult;
+                springLengthPrintDisplay.innerText = springLengthResult + '"';
+
 
             // Getting input values        
 
@@ -3083,6 +3213,11 @@ const mediumDutySprings = [
                 const quantityValue = document.getElementById('quantityAmount').value;
                 const weightValue = document.getElementById('weightAmount').value;
 
+                springPreloadPrintDisplay.innerText = preloadValue + '"';
+                springTravelPrintDisplay.innerText = strokeValue + '"';
+                springQuantityPrintDisplay.innerText = quantityValue;
+                springWeightPrintDisplay.innerText = weightValue + " lbs";
+                requiredEjectionWeightPrintDisplay.innerText = weightValue + " lbs";
 
             // Calculations    
 
@@ -3108,6 +3243,19 @@ const mediumDutySprings = [
                 oneFiveTimesWeightConfirm.innerHTML = weightOneFiveTimes + ' lbs';
                 twoTimesWeightConfirm.innerHTML = weightTwoTimes + ' lbs';
                 ejectionCheckWeightDisplay.innerHTML = halfingEjectionWeight + ' lbs';
+                totalCompressionPrintDisplay.innerText = totalCompression + ' in';
+                deflectionPrintDisplay.innerText = deflectionCalculation + ' %';
+                initalLoadPrintDisplay.innerText = initialLoadCalculation + ' lbs';
+                finalLoadPrintDisplay.innerText = finalLoadCalculation + ' lbs';
+
+                if (colorGet === "H") {
+                    springColorPrintDisplay.innerText = "Gold - Heavy Duty"
+                } else if (colorGet === "MH") {
+                    springColorPrintDisplay.innerText = "Red - Medium Heavy Duty"
+                } else if (colorGet === "M") {
+                    springColorPrintDisplay.innerText = "Blue - Medium Duty"
+                }
+
 
 
             // list selection for sizes
@@ -3184,11 +3332,12 @@ const mediumDutySprings = [
                 oneTimesWeightDisplay.classList.remove("bg-success")
                 oneTimesWeightDisplay.classList.add("bg-danger");
                 oneTimesWeightDisplay.innerText = "FAIL";
-
+                compressOneTimesPassFailResultsPrintAnswerDisplay.innerText = "No";
             } else {
                 oneTimesWeightDisplay.classList.remove("bg-danger");
                 oneTimesWeightDisplay.classList.add("bg-success")
                 oneTimesWeightDisplay.innerText = "PASS";
+                compressOneTimesPassFailResultsPrintAnswerDisplay.innerText = "Yes";
             }
 
             // 1.5 times weight
@@ -3197,11 +3346,13 @@ const mediumDutySprings = [
                 oneFiveTimesWeightDisplay.classList.remove("bg-success")
                 oneFiveTimesWeightDisplay.classList.add("bg-danger");
                 oneFiveTimesWeightDisplay.innerText = "FAIL";
+                compressOneFiveTimesPassFailResultsPrintAnswerDisplay.innerText = "No";
 
             } else {
                 oneFiveTimesWeightDisplay.classList.remove("bg-danger");
                 oneFiveTimesWeightDisplay.classList.add("bg-success")
                 oneFiveTimesWeightDisplay.innerText = "PASS";
+                compressOneFiveTimesPassFailResultsPrintAnswerDisplay.innerText = "Yes";
             }
     
             // 2 times weight
@@ -3210,11 +3361,13 @@ const mediumDutySprings = [
                 twoTimesWeightDisplay.classList.remove("bg-success")
                 twoTimesWeightDisplay.classList.add("bg-danger");
                 twoTimesWeightDisplay.innerText = "FAIL";
+                compressTwoTimesPassFailResultsPrintAnswerDisplay.innerText = "No";
 
             } else {
                 twoTimesWeightDisplay.classList.remove("bg-danger");
                 twoTimesWeightDisplay.classList.add("bg-success")
                 twoTimesWeightDisplay.innerText = "PASS";
+                compressTwoTimesPassFailResultsPrintAnswerDisplay.innerText = "Yes";
             }
 
             // Ejection Weight Check - Ejection Spring
@@ -3223,10 +3376,12 @@ const mediumDutySprings = [
                 ejectionPassFailDisplay.classList.remove("bg-success");
                 ejectionPassFailDisplay.classList.add("bg-danger");
                 ejectionPassFailDisplay.innerText = "FAIL";
+                ejectionPassFailResultsPrintAnswerDisplay.innerText = "No";
             } else {
                 ejectionPassFailDisplay.classList.remove("bg-danger");
                 ejectionPassFailDisplay.classList.add("bg-success");
                 ejectionPassFailDisplay.innerText = "PASS";
+                ejectionPassFailResultsPrintAnswerDisplay.innerText = "Yes";
             }
         }
 
