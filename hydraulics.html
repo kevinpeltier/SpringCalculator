@@ -1,0 +1,32 @@
+<h3 class="text-center">Hydraulics Standards</h3>
+<button class="btn btn-primary w-100 p-2" onclick="hideshow('e1')"><b>Cylidners</b></button>
+
+<div style="display:none" id="e1">
+    <br>
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+<br>
+<br>
+
+<button class="btn btn-primary w-100 p-2" onclick="hideshow('e2')"><b>Fittings</b></button>
+
+<div style="display:none" id="e2">
+    <br>
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+
+
+<!-- SCRIPTS -->
+
+<script>
+    function hideshow(e) {
+      var x = document.getElementById(e);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>

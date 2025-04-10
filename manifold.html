@@ -1,0 +1,54 @@
+<h3 align="center">Manifold Hookups</h3>
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e1')"><b>SVG Hose Channel</b></button></p>
+
+<div style="display:none" id="e1">
+    <br>
+    <table class="table w-50 mx-auto table-striped table-hover">
+      <tr>
+        <th scope="col" width="25%" class="text-center"># Of Zones</th>
+        <th scope="col" width="75%" class="text-center">Size of Channel</th>
+      </tr>
+      <tr>
+        <td class="text-center">4</td>
+        <td class="text-center">1.000" Deep x 2.000" Wide</td>
+      </tr>
+      <tr>
+        <td class="text-center">6</td>
+        <td class="text-center">1.500" Deep x 2.000" Wide</td>
+      </tr>
+      <tr>
+        <td class="text-center">8</td>
+        <td class="text-center">1.500" Deep x 2.500" Wide</td>
+      </tr>
+      <tr>
+        <td class="text-center">12</td>
+        <td class="text-center">1.500" Deep x 3.000" Wide</td>
+      </tr>
+    </table>
+</div>
+
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e2')"><b>Standard Hookups</b></button></p>
+
+<div style="display:none" id="e2">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e3')"><b>Tryout Press Conversions</b></button></p>
+
+<div style="display:none" id="e3">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+
+<!-- SCRIPT -->
+
+<script>
+    function hideshow(e) {
+      var x = document.getElementById(e);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>

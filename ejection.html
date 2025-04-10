@@ -1,0 +1,94 @@
+<h3 align="center">PINS</h3>
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e1')"><b>Ejector Pin(s)</b></button></p>
+
+<div style="display:none" id="e1">
+    <ul>
+        <li>There may be times when a small ejector pin may be needed. However, the clearance cannot be smaller than Ø 0.1875.</li>
+        <li><p>Any ejector pin clearance above Ø 0.1875 needs to be 0.625" greater than the ejector pin diameter. <br>
+            <i>Cimatron default is 0.03125 larger than the pin, this will need to be manually changed.</i></p>
+        </li>
+    </ul>
+</div>
+
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e2')"><b>Return Pin(s)</b></button></p>
+
+<div style="display:none" id="e2">
+    <ul>
+        <li>No ream for return pins, core block clearance all the way through.</li>
+    </ul>
+</div>
+
+
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e3')"><b>Core Pin(s)</b></button></p>
+
+<div style="display:none" id="e3">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e4')"><b>Sleeve(s)</b></button></p>
+
+<div style="display:none" id="e4">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e5')"><b>Knock-Out Extensions</b></button></p>
+
+<div style="display:none" id="e5">
+<p>• If the customer does not call out if knock-out extensions are to sub-flush, proud, or flat to the back of the clamp plate, we revert to the NextGen standard of being sub-flush by .0625".</p>
+<button class="btn btn-primary" onclick="hideshow('e555')">See K.O Example</button>
+<p><img style="display:none" id="e555" src="/media/django-summernote/2024-08-22/03465c6b-d060-4d57-ab27-6a328468040f.png"><br></p>
+</div>
+
+
+<!-- Plates Sections -->
+
+<br>
+
+<h3 align="center">Plates</h3>
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e6')"><b>Ejector Plate</b></button></p>
+
+<div style="display:none" id="e6">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e7')"><b>Retainer Plate</b></button></p>
+
+<div style="display:none" id="e7">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e8')"><b>Bottom Clamp Plate</b></button></p>
+
+<div style="display:none" id="e8">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+<p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e9')"><b>Common Plate</b></button></p>
+
+<div style="display:none" id="e9">
+    <p class="text-center"><i>No standard recorded at this time. If items are missing or have not been added yet please see engineering manager.</i></p><p><br></p>
+</div>
+
+
+
+
+
+
+<!-- SCRIPTS -->
+
+<script>
+function hideshow(e) {
+  var x = document.getElementById(e);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>

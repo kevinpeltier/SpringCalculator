@@ -1,0 +1,45 @@
+<h3 align="center">Cylinders</h3>
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e1')"><b>Ejection Hydraulic Cylinders</b></button></p>
+
+<div style="display:none" id="e1">
+<p><i>IN PROGRESS</i></p>
+</div>
+
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e2')"><b>Core Pull Hydraulic Cylinders</b></button></p>
+
+<div style="display:none" id="e2">
+<p><i>IN PROGRESS</i></p>
+</div>
+
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e3')"><b>Retractor Hydraulic Cylinders</b></button></p>
+
+<div style="display:none" id="e3">
+<p><i>IN PROGRESS</i></p>
+</div>
+
+
+<!-- Fittings -->
+
+<h3 align="center">Fittings</h3>
+<p></p><p><button class="btn btn-primary w-100 p-2" onclick="hideshow('e4')"><b>Hydraulic Cylinder Fittings</b></button></p>
+
+<div style="display:none" id="e4">
+<p><i>IN PROGRESS</i></p>
+</div>
+
+
+
+
+<!-- SCRIPTS -->
+
+
+    <script>
+    function hideshow(e) {
+      var x = document.getElementById(e);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    </script>
